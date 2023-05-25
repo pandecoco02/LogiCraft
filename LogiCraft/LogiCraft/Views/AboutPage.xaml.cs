@@ -20,14 +20,14 @@ namespace LogiCraft.Views
             await Navigation.PushAsync(new TruthTable());
         }
 
-        private void KmapButton_Clicked(object sender, EventArgs e)
+        private async void KmapButton_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new Kmap());
         }
 
-        private void Boolean_Clicked(object sender, EventArgs e)
+        private async void Boolean_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new BooleanExpressions());
         }
     }
 }
