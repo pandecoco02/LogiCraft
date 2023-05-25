@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LogiCraft.Views.AboutPage"
+             xmlns:vm="clr-namespace:LogiCraft.ViewModels"
+             Title="{Binding Title}">
+
+    <ContentPage.BindingContext>
+        <vm:AboutViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#96d1ff</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackLayout BackgroundColor="DarkSlateGray" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <StackLayout Orientation="Vertical" Padding="25,24,25,24" Spacing="10">
+                <!--<ContentView Padding="0,40,0,40" VerticalOptions="FillAndExpand">
+                    <Image Source="xamarin_logo.png" VerticalOptions="Center" HeightRequest="64" />
+                </ContentView>-->
+                <Label Text="Welcome!" FontSize="Title" TextColor="White"/>
+                <Label Text="This mobile application helps you design and analyze digital circuits with ease." TextColor="White"/>
+                <Label FontSize="16" Padding="0,24,0,0"/>
+            </StackLayout>
+        </StackLayout>
+        <ScrollView Grid.Row="1">
+            <StackLayout Orientation="Vertical" Padding="30,24,30,24" Spacing="10">
+                <Label Text="Categories" FontSize="Title"/>
+                <!--<Label Text="Welcome!" FontSize="Title"/>
+                <Label Text="This mobile application helps you design and analyze digital circuits with ease."/>
+                <Label FontSize="16" Padding="0,24,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                --><!--<Span Text="Learn more at "/>
+                                <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>--><!--
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>-->
+
+                <Button x:Name="TruthButton"
+                        Clicked="TruthButton_Clicked"
+                        Margin="0,5,0,0" Text="Truth Table"
+                        Command="{Binding OpenWebCommand}"
+                        BackgroundColor="Blue"
+                        TextColor="White" />
+                <Button x:Name="KmapButton"
+                        Clicked="KmapButton_Clicked"
+                        Margin="0,5,0,0" Text="Kmap"
+                        Command="{Binding OpenWebCommand}"
+                        BackgroundColor="Blue"
+                        TextColor="White" />
+                <Button Margin="0,5,0,0" Text="Boolean Expression"
+                        Clicked="Boolean_Clicked"
+                        Command="{Binding OpenWebCommand}"
+                        BackgroundColor="#0B5301"
+                        TextColor="White" />
+
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+
+</ContentPage>
