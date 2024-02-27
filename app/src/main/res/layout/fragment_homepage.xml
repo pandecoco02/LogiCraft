@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg"
+    tools:context=".Fragment.Homepage">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp"
+        >
+        
+        <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            >
+            
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hi, Welcome!"
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppinssemibold"
+                android:textSize="22sp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Boost your Boolean algebra skills effortlessly with this app! From truth tables to K-maps and logic diagrams, consider it your go-to guide for problem-solving. "
+                android:textColor="@color/white"
+                android:fontFamily="@font/poppinsmedium"
+                android:textSize="12sp"
+                />
+
+            
+        </LinearLayout>
+
+        <ImageView
+
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:padding="10dp"
+            android:src="@drawable/male"
+            />
+
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"
+        android:background="@drawable/rounded_top_corners"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="20dp"
+            android:text="Categories"
+            android:textColor="@color/black"
+            android:fontFamily="@font/poppinssemibold"
+            android:textSize="16sp"
+            />
+
+<!--        TRUTH TABLE-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+            android:outlineSpotShadowColor="@color/shadow"
+            android:outlineAmbientShadowColor="@color/shadow"
+            >
+
+            <LinearLayout
+                android:id="@+id/cardViewTruthTable"
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/ripple"
+                android:clickable="true"
+                android:focusable="true"
+        >
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/truth_icon"
+                   />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp"
+                    android:text="Truth Table"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="14sp"
+                    />
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- Karnaugh TABLE-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp"
+            android:layout_marginTop="10dp"
+            app:cardElevation="10dp"
+            android:outlineSpotShadowColor="@color/shadow"
+            android:outlineAmbientShadowColor="@color/shadow"
+            >
+
+            <LinearLayout
+                android:id="@+id/cardViewKarnaughMap"
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/ripple"
+                android:clickable="true"
+                android:focusable="true"
+                >
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/karnaugh_icon"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp"
+                    android:text="Karnaugh Map"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="14sp"
+                    />
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- Karnaugh TABLE-->
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="20dp"
+            android:layout_marginTop="10dp"
+            app:cardElevation="10dp"
+            android:outlineSpotShadowColor="@color/shadow"
+            android:outlineAmbientShadowColor="@color/shadow"
+            >
+
+            <LinearLayout
+                android:id="@+id/cardViewBooleanExpression"
+                android:padding="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/ripple"
+                android:clickable="true"
+                android:focusable="true"
+                >
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/boolean_icon"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="20dp"
+                    android:text="Boolean Expression"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/poppinssemibold"
+                    android:textSize="14sp"
+                    />
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
