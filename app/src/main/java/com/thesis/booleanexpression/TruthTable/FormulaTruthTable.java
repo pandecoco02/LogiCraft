@@ -497,9 +497,6 @@ public class FormulaTruthTable extends AppCompatActivity {
             public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getView(position, convertView, parent);
                 TextView textView = (TextView) view; // Now we cast directly to TextView
-                // Set your custom font here using Typeface if needed
-                // Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.your_custom_font);
-                // textView.setTypeface(typeface);
                 return view;
             }
 
@@ -507,9 +504,6 @@ public class FormulaTruthTable extends AppCompatActivity {
             public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView textView = view.findViewById(R.id.textView);
-                // Set your custom font here using Typeface if needed
-                // Typeface typeface = ResourcesCompat.getFont(getContext(), R.font.your_custom_font);
-                // textView.setTypeface(typeface);
                 return view;
             }
         };

@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //retrieve if admin or not
+
         // Read data
         SharedPreferences sharedPreferences = getSharedPreferences("admin", Context.MODE_PRIVATE);
         Boolean isAdmin = sharedPreferences.getBoolean("isAdmin", false);

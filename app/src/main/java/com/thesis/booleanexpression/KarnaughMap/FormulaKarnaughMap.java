@@ -1075,7 +1075,7 @@ public class FormulaKarnaughMap extends AppCompatActivity {
 
     private void fetchWolframAlphaResult(String query) {
         progressBar.setVisibility(View.VISIBLE);
-        String appID = "6QWUPQ-TJ7L5TAT2V"; // Replace with your Wolfram Alpha App ID
+        String appID = "6QWUPQ-TJ7L5TAT2V";
         String url = "https://api.wolframalpha.com/v2/query?appid=" + appID + "&input=logic+circuit+" + query + "&format=image";
 
         OkHttpClient client = new OkHttpClient();

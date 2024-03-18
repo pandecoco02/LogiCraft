@@ -236,7 +236,6 @@ public class BooleanToTruth {
                 || c == bicond.inputChar || c == leftParen.inputChar || c == rightParen.inputChar) {
             return true;
         }
-
         return false;
     }
 

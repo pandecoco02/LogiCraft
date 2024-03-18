@@ -86,6 +86,6 @@ public class Term {
 
     public String getString() { return term; }
     ArrayList<Integer> getNums() { return nums; }
-    int getNumOnes() { return ones; }
+    public int getNumOnes() { return ones; }
 
 }

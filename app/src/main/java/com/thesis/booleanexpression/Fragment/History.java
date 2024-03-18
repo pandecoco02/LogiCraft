@@ -97,20 +97,6 @@ public class History extends Fragment implements MyInterface {
 
 
 
-//        historyModels.add(new HistoryModel(1, "Fri Oct 27 01:50:05 GMT 2023", "Truth Table Input"));
-//        historyModels.add(new HistoryModel(1, "Fri Oct 27 01:50:05 GMT 2023", "Boolean Expression Input"));
-//        historyModels.add(new HistoryModel(1, "Fri Oct 28 01:50:05 GMT 2023", "Karnaugh Map Input"));
-//        historyModels.add(new HistoryModel(1,"Fri Oct 28 01:50:05 GMT 2023", "Truth Table Input"));
-
-//        getActivity().runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                historyAdapter.notifyDataSetChanged();
-//            }
-//        });
-
-
-
         SimpleDateFormat originalFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
         SimpleDateFormat desiredFormat = new SimpleDateFormat("dd MMM", Locale.US);
         ArrayList<HistoryModel> processedList = new ArrayList<>();

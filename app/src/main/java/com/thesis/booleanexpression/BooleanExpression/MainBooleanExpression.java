@@ -243,10 +243,7 @@ public class MainBooleanExpression extends AppCompatActivity {
         btnHelp.setOnClickListener(v -> {
             final Dialog dialog = new Dialog(MainBooleanExpression.this);
             dialog.setContentView(R.layout.pop_up_info);
-
-
             // Get the Window object of the dialog
-
 
             // Show the dialog
             dialog.show();

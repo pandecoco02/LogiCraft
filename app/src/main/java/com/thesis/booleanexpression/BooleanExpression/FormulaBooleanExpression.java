@@ -1,5 +1,6 @@
 package com.thesis.booleanexpression.BooleanExpression;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -16,12 +17,15 @@ import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.pdf.PdfDocument;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -108,45 +112,115 @@ public class FormulaBooleanExpression extends AppCompatActivity {
         String input = intent.getStringExtra("input");
 
         simplified(input);
-
-        //generateLogicDiagram(input);
-
+        //finalSimplified(input);
     }
 
 
     private void simplified(String encodedQuery) {
-        WebView myWebView = (WebView) findViewById(R.id.webview);
+        LinearLayout container_simplify = findViewById(R.id.container_simplify);
+        final WebView myWebView = (WebView) findViewById(R.id.webview);
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
-        myWebView.loadUrl("https://www.emathhelp.net/en/calculators/discrete-mathematics/boolean-algebra-calculator/?f=" + encodedQuery);
+        // Initially set the WebView to invisible
+        myWebView.setVisibility(View.GONE);
+
+        // Define the JavaScript interface
+        class WebAppInterface {
+            @JavascriptInterface
+            public void processHTML(final String html) {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        // Create a new WebView to display the processed HTML
+                        WebView solutionWebView = new WebView(getApplicationContext());
+                        solutionWebView.setLayoutParams(new LinearLayout.LayoutParams(
+                                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+                        // Enable JavaScript on the WebView
+                        WebSettings settings = solutionWebView.getSettings();
+                        settings.setJavaScriptEnabled(true);
+
+
+                        // Set up a WebViewClient to inject JavaScript when the page loads
+                        solutionWebView.setWebViewClient(new WebViewClient() {
+                            @Override
+                            public void onPageFinished(WebView view, String url) {
+                                // This is called when the page has finished loading
+                                super.onPageFinished(view, url);
+                                // Inject JavaScript to remove the 'calculator-input' element
+                                view.evaluateJavascript("javascript:(function() { " +
+                                        "var element = document.getElementById('calculator-input');" +
+                                        "if (element) {" +
+                                        "   element.parentNode.removeChild(element);" +
+                                        "} " +
+                                        "})()", null);
+
+                                view.evaluateJavascript("javascript:(function() { " +
+                                        "var elements = document.getElementsByClassName('katex-html');" +
+                                        "while (elements.length > 0) {" +
+                                        "   var elementToRemove = elements[0];" +
+                                        "   elementToRemove.parentNode.removeChild(elementToRemove);" +
+                                        "}" +
+                                        "})()", null);
+
+                            }
+                        });
+
+                        solutionWebView.loadDataWithBaseURL(null, html, "text/html", "UTF-8", null);
+
+                        container_simplify.addView(solutionWebView);
+
+                        // Now that the content is ready, make the container visible
+                        container_simplify.setVisibility(View.VISIBLE);
+                    }
+                });
+            }
+        }
+
+        // Add the JavaScript interface to the WebView
+        myWebView.addJavascriptInterface(new WebAppInterface(), "AndroidBridge");
 
         myWebView.setWebViewClient(new WebViewClient() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
-                // JavaScript code to remove unwanted elements
+
                 view.evaluateJavascript("javascript:(function() { " +
-                        "document.body.innerHTML = document.getElementById('solution').outerHTML; " +
+                        "console.log('onPageFinished called');" +
+                        "var solution = document.getElementById('solution');" +
+                        "if (solution) {" +
+                        "   console.log('Solution element found');" +
+                        "   AndroidBridge.processHTML(solution.outerHTML);" +
+                        "} else {" +
+                        "   console.log('Solution element not found');" +
+                        "}" +
+                        "var element = document.getElementById('calculator-input');" +
+                        "if (element) {" +
+                        "   element.parentNode.removeChild(element);" +
+                        "   console.log('Calculator input removed');" +
+                        "} else {" +
+                        "   console.log('Calculator input not found');" +
+                        "}" +
                         "})()", null);
+
+                view.evaluateJavascript("javascript:(function() { " +
+                        "var element = document.getElementById('calculator-input'); " +
+                        "if (element) element.parentNode.removeChild(element); " +
+                        "})()", null);
+
+
             }
+
         });
 
+
+        myWebView.loadUrl("https://www.emathhelp.net/en/calculators/discrete-mathematics/boolean-algebra-calculator/?f=" + encodedQuery);
+        Log.d("StepLog", "https://www.emathhelp.net/en/calculators/discrete-mathematics/boolean-algebra-calculator/?f=" + encodedQuery);
+
+
     }
-
-
-    private void generateLogicDiagram(String expression) {
-        String encodedQuery = null;
-        try {
-            encodedQuery = URLEncoder.encode(convertToBoolean(expression), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            throw new RuntimeException(e);
-        }
-        //TODO Remove Comment
-        finalSimplified(encodedQuery);
-    }
-
-
 
     private void fetchWolframAlphaResult(String query) {
         progressBar.setVisibility(View.VISIBLE);
