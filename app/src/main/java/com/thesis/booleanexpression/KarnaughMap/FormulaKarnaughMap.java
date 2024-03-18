@@ -1071,7 +1071,6 @@ public class FormulaKarnaughMap extends AppCompatActivity {
 
     }
 
-
     private void fetchWolframAlphaResult(String query) {
         progressBar.setVisibility(View.VISIBLE);
         String appID = "6QWUPQ-TJ7L5TAT2V";
