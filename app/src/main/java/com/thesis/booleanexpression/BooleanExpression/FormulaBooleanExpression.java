@@ -682,7 +682,7 @@ public class FormulaBooleanExpression extends AppCompatActivity {
 
 
 
-        generateKmapTable( variableCount, "1");
+        //generateKmapTable( variableCount, "1");
 
         Log.d("TAG", String.valueOf(columnCount));
         Log.d("TAG", String.valueOf(variableCount));
@@ -692,7 +692,7 @@ public class FormulaBooleanExpression extends AppCompatActivity {
 
 
 
-    private void generateKmapTable(int variableCount, String group) {
+  /*  private void generateKmapTable(int variableCount, String group) {
         if (variableCount == 2) {
             String[] headers = {"  ", "", ""};
             String[][] data = {{"  ", minters[0], minters[1]}, {"  ", minters[2], minters[3]}};
@@ -719,7 +719,7 @@ public class FormulaBooleanExpression extends AppCompatActivity {
             createTable(headers, data, R.id.kmapTableLayout);
             createGroupTable(headers, data, R.id.groupTableLayout, group);
         }
-    }
+    }*/
 
 
     private void createTable(String[] headers, String[][] data, int tableLayoutId) {
@@ -769,7 +769,7 @@ public class FormulaBooleanExpression extends AppCompatActivity {
         }
 
     }
-    private void createGroupTable(String[] headers, String[][] data, int tableLayoutId, String group) {
+  /*  private void createGroupTable(String[] headers, String[][] data, int tableLayoutId, String group) {
         TableLayout tableLayout = findViewById(tableLayoutId);
 
 
@@ -821,7 +821,7 @@ public class FormulaBooleanExpression extends AppCompatActivity {
             // Add the TableRow to the TableLayout
             tableLayout.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
         }
-    }
+    }*/
 
 
 
