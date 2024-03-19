@@ -692,36 +692,6 @@ public class FormulaBooleanExpression extends AppCompatActivity {
 
 
 
-  /*  private void generateKmapTable(int variableCount, String group) {
-        if (variableCount == 2) {
-            String[] headers = {"  ", "", ""};
-            String[][] data = {{"  ", minters[0], minters[1]}, {"  ", minters[2], minters[3]}};
-            createTable(headers, data, R.id.kmapTableLayout);
-            createGroupTable(headers, data, R.id.groupTableLayout, group);
-        } else if (variableCount == 3) {
-            String[] headers = {"  ", "", "", "", ""};
-            String[][] data = {{"  ", minters[0], minters[1], minters[3], minters[2]}, {"  ", minters[4], minters[5], minters[7], minters[6]}};
-            createTable(headers, data, R.id.kmapTableLayout);
-            createGroupTable(headers, data, R.id.groupTableLayout, group);
-        }else if (variableCount == 4) {
-            String[] headers = {"  ", "", "", "", ""};
-            String[][] data = {{"  ", minters[0], minters[1], minters[3], minters[2]}, {"  ", minters[4], minters[5], minters[7], minters[6]}, {"  ", minters[12], minters[13], minters[15], minters[14]}, {"  ", minters[8], minters[9], minters[11], minters[10]}};
-            createTable(headers, data, R.id.kmapTableLayout);
-            createGroupTable(headers, data, R.id.groupTableLayout, group);
-        } else if (variableCount == 5) {
-            String[] headers = {"  ", "", "", " ", ""};
-            String[][]data = {{"  ", minters[0], minters[1], minters[3], minters[2]}, {"  ", minters[4], minters[5], minters[7], minters[6]}, {"  ", minters[12], minters[13], minters[15], minters[14]}, {"  '", minters[8], minters[9], minters[11], minters[10]}, {"  ", minters[16], minters[17], minters[19], minters[18]}, {"  ", minters[20], minters[21], minters[23], minters[22]}, {"  ", minters[28], minters[29], minters[31], minters[30]}, {"  ", minters[24], minters[25], minters[27], minters[26]}};
-            createTable(headers, data, R.id.kmapTableLayout);
-            createGroupTable(headers, data, R.id.groupTableLayout, group);
-        } else if (variableCount == 6) {
-            String[] headers = {"  ", "", " ", "", " "};
-            String[][] data = {{"  ", minters[0], minters[1], minters[3], minters[2]}, {"  ", minters[4], minters[5], minters[7], minters[6]}, {"  ", minters[12], minters[13], minters[15], minters[14]}, {"  ", minters[8], minters[9], minters[11], minters[10]}, {" ", minters[16], minters[17], minters[19], minters[18]}, {"  ", minters[20], minters[21], minters[23], minters[22]}, {"  ", minters[28], minters[29], minters[31], minters[30]}, {"  ", minters[24], minters[25], minters[27], minters[26]}, {"  ", minters[32], minters[33], minters[35], minters[34]}, {"  ", minters[36], minters[37], minters[39], minters[38]}, {"  ", minters[44], minters[45], minters[47], minters[46]}, {"  ", minters[40], minters[41], minters[43], minters[42]}, {"  ", minters[48], minters[49], minters[51], minters[50]}, {"  ", minters[52], minters[53], minters[55], minters[54]}, {"  ", minters[60], minters[61], minters[63], minters[62]}, {"  ", minters[56], minters[57], minters[59], minters[58]}};
-            createTable(headers, data, R.id.kmapTableLayout);
-            createGroupTable(headers, data, R.id.groupTableLayout, group);
-        }
-    }*/
-
-
     private void createTable(String[] headers, String[][] data, int tableLayoutId) {
         TableLayout tableLayout = findViewById(tableLayoutId);
         tableLayout.removeAllViews();
@@ -769,59 +739,7 @@ public class FormulaBooleanExpression extends AppCompatActivity {
         }
 
     }
-  /*  private void createGroupTable(String[] headers, String[][] data, int tableLayoutId, String group) {
-        TableLayout tableLayout = findViewById(tableLayoutId);
 
-
-        tableLayout.removeAllViews();
-        // Create a row for the header
-        TableRow headerRow = new TableRow(this);
-        for (String header : headers) {
-            TextView tv = new TextView(this);
-            tv.setText(header);
-            tv.setGravity(Gravity.CENTER);
-            tv.setPadding(10, 10, 10, 10);
-            tv.setTextColor(getResources().getColor(R.color.primary));
-            // Add TextView to the TableRow
-            headerRow.addView(tv);
-        }
-
-        // Add the header row to the table layout without border
-        tableLayout.addView(headerRow, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
-        // Add data rows
-        for (int i = 0; i < data.length; i++) {
-            TableRow tr = new TableRow(this);
-            for (int j = 0; j < data[i].length; j++) {
-                TextView tv = new TextView(this);
-                tv.setText(String.valueOf(data[i][j]));
-                tv.setGravity(Gravity.CENTER);
-                tv.setPadding(10, 10, 10, 10);
-                tv.setTextColor(getResources().getColor(R.color.primary));
-                // Remove border effect by setting the background to a transparent drawable for the first column
-                // Check the value and set background color accordingly
-                if (data[i][j].equals(group)) {
-                    // Set background to primary color
-                    tv.setBackgroundColor(getResources().getColor(R.color.primary));
-                    tv.setTextColor(getResources().getColor(R.color.white)); // Assuming you want white text on primary background
-                } else  {
-                    // Set background to white
-                    tv.setBackgroundColor(getResources().getColor(android.R.color.white));
-                    tv.setTextColor(getResources().getColor(R.color.black)); // Assuming you want black text on white background
-                }
-
-                // Remove border effect by setting the background to a transparent drawable for the first column
-                if (j == 0) {
-                    tv.setBackgroundResource(android.R.color.transparent);
-                    tv.setTextColor(getResources().getColor(R.color.primary)); // Set text color for the first column
-                }
-
-                // Add TextView to the TableRow
-                tr.addView(tv);
-            }
-            // Add the TableRow to the TableLayout
-            tableLayout.addView(tr, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
-        }
-    }*/
 
 
 
